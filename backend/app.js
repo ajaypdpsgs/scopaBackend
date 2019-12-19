@@ -14,6 +14,8 @@ const passport = require('passport');
 
 // var indexRouter = require('./routes/index');
 var rtsIndex = require('./routes/users');
+var rtsIndexRehis = require('./routes/registrationRoute');
+
 
 var app = express();
 
@@ -61,11 +63,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-var rtsIndex=require('./routes/users');
+// var rtsIndex=require('./routes/users');
 
 app.use(passport.initialize());
 
 app.use('/api', rtsIndex);
+app.use('/api', rtsIndexRehis);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
