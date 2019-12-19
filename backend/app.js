@@ -14,6 +14,14 @@ const passport = require('passport');
 
 // var indexRouter = require('./routes/index');
 var rtsIndex = require('./routes/users');
+var rtsshooltype =require('./routes/typeOfSchool');
+var rtsschoollevel =require('./routes/schoolLevel');
+var rtskindofschool =require('./routes/kindofSchool');
+var rtsschoolcategory = require('./routes/categoryofSchool');
+var rtsschoolEntity =require('./routes/schoolEntity');
+var rtsboard = require('./routes/schoolBoard');
+
+
 
 var app = express();
 
@@ -66,6 +74,16 @@ var rtsIndex=require('./routes/users');
 app.use(passport.initialize());
 
 app.use('/api', rtsIndex);
+app.use('/api', rtsshooltype);
+app.use('/api',rtsschoollevel);
+app.use('/api',rtskindofschool);
+app.use('/api',rtsschoolcategory);
+app.use('/api',rtsschoolEntity);
+app.use('/api',rtsboard);
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
