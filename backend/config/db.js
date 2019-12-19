@@ -6,3 +6,7 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true,useUnifiedTopol
 });
 
 require('./../models/userModel');
+require('./../models/typeOfSchoolModel');
+require('./../models/schoolLevelsModel');
+require('./../models/kindofSchoolModel');
+require('./../models/categoryofSchoolModel');

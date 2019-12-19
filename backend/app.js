@@ -11,9 +11,24 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport = require('passport');
 
+//All Module Name
 
+var User = require('./models/categoryofSchoolModel');
+
+
+
+// All Route Name
 // var indexRouter = require('./routes/index');
 var rtsIndex = require('./routes/users');
+var rtsIndexRehis = require('./routes/registrationRoute');
+var rtsshooltype =require('./routes/typeOfSchool');
+var rtsschoollevel =require('./routes/schoolLevel');
+var rtskindofschool =require('./routes/kindofSchool');
+var rtsschoolcategory = require('./routes/categoryofSchool')(rtsIndex);
+var rtsschoolEntity =require('./routes/schoolEntity');
+var rtsboard = require('./routes/schoolBoard');
+
+
 
 var app = express();
 
@@ -61,11 +76,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-var rtsIndex=require('./routes/users');
+// var rtsIndex=require('./routes/users');
 
 app.use(passport.initialize());
 
 app.use('/api', rtsIndex);
+app.use('/api', rtsIndexRehis);
+app.use('/api', rtsshooltype);
+app.use('/api',rtsschoollevel);
+app.use('/api',rtskindofschool);
+// app.use('/api',rtsschoolcategory);
+app.use('/api',rtsschoolEntity);
+app.use('/api',rtsboard);
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

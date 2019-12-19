@@ -1,13 +1,10 @@
-/**
-* @swagger 
-*/
+
 const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
 
 const User = mongoose.model('User');
 var mailer=require('./../mailer/mailer');
-var nodemailer = require('nodemailer');
 
 // var templates = mongoose.model('emailtemplate');
 
@@ -43,7 +40,6 @@ module.exports.register = (req, res, next) => {
         //  }
 
         if (!err){
-            console.log('doc1111',doc);
             res.send(doc);
             var userData = {
                 name: 'User'
