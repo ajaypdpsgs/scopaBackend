@@ -19,8 +19,9 @@ module.exports.orgRegistration = (req, res, next) => {
         nameOfSchool:data.nameOfSchool,
         schoolRegNo   :data.schoolRegNo,
         yearofEstablishment:data.yearofEstablishment,
-        typeOfSchoolId   :data.typeOfSchoolId,
-        kindOfSchoolId:data.kindOfSchoolId,
+        schoolCategory   :data.schoolCategory,
+        SchoolType:data.SchoolType,
+        KindOfSchool : data.KindOfSchool,
         NoOfStudent   :data.NoOfStudent,
         selectBoardId:data.selectBoardId,
         schoolReachId   :data.schoolReachId,
@@ -67,4 +68,32 @@ module.exports.orgRegistration = (req, res, next) => {
         }
 
     });
+}
+exports.getProductList = function (req, res) {
+    Registration.find({})
+        .populate('schoolCategory')
+        .populate('typeOfSchool')
+        .populate('kindofSchool')
+        .populate('schoolBoard')
+        .populate('schoolLevel')
+        .populate('Country')
+        .populate('State')
+        .populate('City')
+        .populate('User')
+        .exec((err, resp) => {
+            if (resp) {
+                var outputJSON = {
+                    status: 200,
+                    data: resp
+                }
+                res.status(200).send(outputJSON)
+            }
+            else {
+                var outputJSON = {
+                    status: 201,
+                    msg: 'data not found'
+                }
+                res.status(201).send(outputJSON)
+            }
+        })
 }

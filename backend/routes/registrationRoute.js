@@ -40,9 +40,11 @@ const jwtHelper = require('../config/jwtHelper');
 *         type: string
 *       yearofEstablishment:
 *         type: string
-*       typeOfSchoolId:
+*       schoolCategory:
 *         type: string
-*       kindOfSchoolId:
+*       SchoolType:
+*         type: string
+*       KindOfSchool:
 *         type: string
 *       NoOfStudent:
 *         type: number
@@ -110,8 +112,9 @@ const jwtHelper = require('../config/jwtHelper');
 *         - nameOfSchool
 *         - schoolRegNo
 *         - yearofEstablishment
-*         - typeOfSchoolId
-*         - kindOfSchoolId
+*         - schoolCategory
+*         - SchoolType
+*         - KindOfSchool
 *         - NoOfStudent
 *         - selectBoardId
 *         - schoolReachId
@@ -138,7 +141,7 @@ const jwtHelper = require('../config/jwtHelper');
 
 router.post('/registerScopa', ctrlRegistration.orgRegistration);
 // router.post('/authenticate', ctrlUser.authenticate);
-// router.get('/userProfile',jwtHelper.verifyJwtToken, ctrlUser.userProfile);
+router.get('/orgList', ctrlRegistration.getProductList);
 
 
 

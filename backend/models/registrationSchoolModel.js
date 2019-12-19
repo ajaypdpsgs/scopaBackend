@@ -22,26 +22,31 @@ var RegistrationSchema = new Schema({
         type: Date,
         required: 'year of Establishment can\'t be empty',
     },
-    typeOfSchoolId : {
-        type: String,
-        required: 'type Of School Id  can\'t be empty'
+    schoolCategory : {
+        type:  mongoose.Schema.Types.ObjectId, ref: 'categoryofSchool',
+        required: 'school Type Id  can\'t be empty',
     },
-    kindOfSchoolId : {
-        type: String,
-        required: 'kind Of School Id  can\'t be empty',
+    SchoolType : {
+        type:  mongoose.Schema.Types.ObjectId, ref: 'typeOfSchool',
+        required: 'school Kind Id  can\'t be empty',
+    },
+    KindOfSchool : {
+        type: mongoose.Schema.Types.ObjectId, ref: 'kindofSchool',
+        required: 'school entity Id  can\'t be empty',
+    },
+    selectBoardId : {
+        type:  mongoose.Schema.Types.ObjectId, ref: 'schoolBoard',
+    },
+    schoolReachId : {
+        type: mongoose.Schema.Types.ObjectId, ref: 'schoolLevel',
+        required: 'school Reached Id  can\'t be empty',
     },
     NoOfStudent : {
         type: Number,
         required: 'No Of Student can\'t be empty',
     },
-    selectBoardId : {
-        type: String,
-        required: 'Name Of School Id can\'t be empty'
-    },
-    schoolReachId : {
-        type: String,
-        required: 'school Reached Id  can\'t be empty',
-    },
+    
+   
     multiBranch : {
         type: String,
         required: 'multiBranch can\'t be empty',
@@ -67,15 +72,15 @@ var RegistrationSchema = new Schema({
         required: 'schoolTiming can\'t be empty'
     },
     countryId : {
-        type: String,
+        type:  mongoose.Schema.Types.ObjectId, ref: 'Country',
         required: 'country Id can\'t be empty',
     },
     stateId : {
-        type: String,
+        type:  mongoose.Schema.Types.ObjectId, ref: 'State',
         required: 'stateId can\'t be empty',
     },
     cityId : {
-        type: String,
+        type:  mongoose.Schema.Types.ObjectId, ref: 'City',
         required: 'cityId can\'t be empty'
     },
     pincode  : {
@@ -169,7 +174,7 @@ var RegistrationSchema = new Schema({
         default : Date.now
     },
     approvedBy : {
-        type : String
+        type :  mongoose.Schema.Types.ObjectId, ref: 'User'
     },
     createdAt : {
         type : Date,
